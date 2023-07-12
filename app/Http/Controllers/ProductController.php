@@ -31,17 +31,17 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $formField = $request->validate(
+        $request->validate(
             [
                 'name' => 'required',
                 'price' => 'required|integer',
-                'description' => '',
+                'description' => 'required',
             ]
         );
 
-        Product::create($formField);
+        Product::create();
         // redirect
-        return redirect('admin/products')->with('success', 'Product created successfully!');
+        return redirect()->route('admin/products')->with('success', 'Product created successfully!');
     }
 
     /**
@@ -65,7 +65,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        
     }
 
     /**

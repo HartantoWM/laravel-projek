@@ -17,7 +17,10 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', function () {
+    return view ('welcome');
+});
+Route::get('/home', [HomeController::class, 'home'])->name('shop.home');
 Route::get('/shop', [HomeController::class, 'shop'])->name('shop.index');
 Route::get('/shop/{product}', [HomeController::class, 'show'])->name('shop.detail');
 Route::get('/shop/{product}/checkout', [HomeController::class, 'checkout'])->name('checkout');

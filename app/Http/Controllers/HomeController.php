@@ -22,9 +22,18 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+     
     public function index()
     {
-        return view('frontend.home');
+        $products=Product::all();
+        return view('welcome', compact('products'));
+    }
+
+    public function home()
+    {
+        $products=Product::all();
+        return view('frontend.home', compact('products'));
     }
 
     public function shop()
@@ -42,4 +51,5 @@ class HomeController extends Controller
     public function checkout(Product $product){
         return view ('frontend.shop.checkout', compact('product'));
     }
+
 }
